@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -626,6 +626,31 @@ require('lazy').setup({
         },
       }
     end,
+  },
+
+  -- Plugin: https://github.com/romgrk/barbar.nvim
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      -- dont want this 'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      -- dont want this 'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+      local map = vim.api.nvim_set_keymap
+      local opts = { noremap = true, silent = true }
+      -- Move to previous/next
+      map('n', '<Tab>', '<Cmd>BufferPrevious<CR>', opts)
+      map('n', '<S-Tab>', '<Cmd>BufferNext<CR>', opts)
+    end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      -- animation = true,
+      -- insert_at_start = true,
+      -- …etc.
+      animation = false,
+    },
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
 
   { -- Autoformat
