@@ -640,8 +640,8 @@ require('lazy').setup({
       local map = vim.api.nvim_set_keymap
       local opts = { noremap = true, silent = true }
       -- Move to previous/next
-      map('n', '<Tab>', '<Cmd>BufferPrevious<CR>', opts)
-      map('n', '<S-Tab>', '<Cmd>BufferNext<CR>', opts)
+      map('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
+      map('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
     end,
     opts = {
       -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
